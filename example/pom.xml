@@ -9,7 +9,8 @@
 
   <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.source-target.version>1.8</java.source-target.version>
+      <java.source.version>1.8</java.source.version>
+      <java.target.version>1.8</java.target.version>
         <aspectj.version>1.8.10</aspectj.version>
         <main-class>app.Test</main-class>
   </properties>
@@ -62,6 +63,18 @@
                     </arguments>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.6.0</version>
+                <configuration>
+                    <source>${java.source.version}</source>
+                    <target>${java.target.version}</target>
+                    <!-- Disable annotation processing for ourselves. -->
+                    <compilerArgument>-proc:none</compilerArgument>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
 

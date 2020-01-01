@@ -10,27 +10,28 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.source-target.version>1.8</java.source-target.version>
-        <aspectj.version>1.8.2</aspectj.version>
+        <java.version>11</java.version>
+        <aspectj.version>1.9.5</aspectj.version>
+        <org.openjfx.javafx.version>13.0.1</org.openjfx.javafx.version>
+        <maven-invoker.version>3.0.1</maven-invoker.version>
+        <maven-model.version>3.6.3</maven-model.version>
+        <json-simple.version>1.1.1</json-simple.version>
+        <jackson.version>2.8.5</jackson.version>
+        <aws-lambda-java-core.version>1.2.0</aws-lambda-java-core.version>
+        <aws-java-sdk-lambda.version>1.11.699</aws-java-sdk-lambda.version>
+        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.apache.maven.shared</groupId>
             <artifactId>maven-invoker</artifactId>
-            <version>2.1.1</version>
+            <version>${maven-invoker.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.maven</groupId>
             <artifactId>maven-model</artifactId>
-            <version>2.2.1</version>
-        </dependency>
-        <dependency>
-            <groupId>com.sun.tools</groupId>
-            <artifactId>tools</artifactId>
-            <version>${java.version}</version>
-            <scope>system</scope>
-            <systemPath>${java.home}/../lib/tools.jar</systemPath>
+            <version>${maven-model.version}</version>
         </dependency>
         <dependency>
             <groupId>org.aspectj</groupId>
@@ -41,22 +42,27 @@
         <dependency>
             <groupId>com.googlecode.json-simple</groupId>
             <artifactId>json-simple</artifactId>
-            <version>1.1</version>
+            <version>${json-simple.version}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
-            <version>2.8.5</version>
+            <version>${jackson.version}</version>
         </dependency>
         <dependency>
             <groupId>com.amazonaws</groupId>
             <artifactId>aws-lambda-java-core</artifactId>
-            <version>1.1.0</version>
+            <version>${aws-lambda-java-core.version}</version>
         </dependency>
         <dependency>
             <groupId>com.amazonaws</groupId>
             <artifactId>aws-java-sdk-lambda</artifactId>
-            <version>1.11.60</version>
+            <version>${aws-java-sdk-lambda.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>${org.openjfx.javafx.version}</version>
         </dependency>
 
     </dependencies>
@@ -66,10 +72,9 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.6.0</version>
+                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <release>${java.version}</release>
                     <!-- Disable annotation processing for ourselves. -->
                     <compilerArgument>-proc:none</compilerArgument>
                 </configuration>
